@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import TextField from "./TextField";
-import { Await, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api/api";
 import toast from "react-hot-toast";
+import { useStoreContext } from "../contextApi/ContextApi";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
+  const { setToken } = useStoreContext();
 
   const {
     register,
@@ -28,9 +30,10 @@ const LoginPage = () => {
     try {
       const { data: response } = await api.post("/auth/public/login", data);
       console.log(response.token);
+      setToken(response.token);
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
       reset();
-      navigate("/");
+      navigate("/dashboard");
       toast.success("Login Successfully!");
     } catch (error) {
       console.log(error);
