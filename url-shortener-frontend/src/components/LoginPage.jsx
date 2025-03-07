@@ -28,7 +28,7 @@ const LoginPage = () => {
   const loginHandler = async (data) => {
     setLoader(true);
     try {
-      const { data: response } = await api.post("/auth/public/login", data);
+      const { data: response } = await api.post("/api/auth/public/login", data);
       console.log(response.token);
       setToken(response.token);
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
@@ -44,7 +44,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex justify-center items-center">
+    <div className="min-h-[calc(100vh-196px)] flex justify-center items-center">
       <form
         onSubmit={handleSubmit(loginHandler)}
         className="sm:w-[450px] w-[360px] shadow-custom py-8 sm:px-8 px-4 rounded-md"

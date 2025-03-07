@@ -15,7 +15,7 @@ const LandingPage = () => {
   const dashBoardnavigateHandler = () => {};
 
   return (
-    <div className="min-h-[calc(100vh-64px)] lg:px-14 sm:px-8 px-4">
+    <div className="min-h-[calc(100vh-196px)] lg:px-14 sm:px-8 px-4">
       <div className="lg:flex-row flex-col    lg:py-5   pt-16   lg:gap-10 gap-8 flex justify-between items-center">
         <div className="flex-1">
           <motion.h1

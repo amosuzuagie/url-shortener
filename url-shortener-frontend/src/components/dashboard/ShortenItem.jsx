@@ -33,9 +33,9 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
     setLoader(true);
 
     try {
-      console.log("analytic Token: " + token);
+      // console.log("analytic Token: " + token);
       const { data } = await api.get(
-        `/urls/analytics/${selectedUrl}?startDate=2025-03-05T00:00:00&endDate=2025-03-06T23:59:59`,
+        `/api/urls/analytics/${selectedUrl}?startDate=2025-03-05T00:00:00&endDate=2025-03-06T23:59:59`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
 
       setAnalyticsData(data);
       setSelectedUrl("");
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       navigate("/error");
       console.log(error);

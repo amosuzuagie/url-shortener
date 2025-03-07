@@ -26,7 +26,10 @@ const RegisterPage = () => {
   const registerHandler = async (data) => {
     setLoader(true);
     try {
-      const { data: response } = await api.post("/auth/public/register", data);
+      const { data: response } = await api.post(
+        "/api/auth/public/register",
+        data
+      );
       reset();
       navigate("/login");
       toast.success("Registered Successfully!");
@@ -39,7 +42,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex justify-center items-center">
+    <div className="min-h-[calc(100vh-196px)] flex justify-center items-center">
       <form
         onSubmit={handleSubmit(registerHandler)}
         className="sm:w-[450px] w-[360px] shadow-custom py-8 sm:px-8 px-4 rounded-md"

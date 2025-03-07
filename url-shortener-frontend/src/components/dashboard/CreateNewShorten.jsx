@@ -26,15 +26,14 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
   const createShortUrlHandler = async (data) => {
     setLoading(true);
     try {
-      const { data: res } = await api.post("/urls/shorten", data, {
+      const { data: res } = await api.post("/api/urls/shorten", data, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
           Authorization: "Bearer " + token,
         },
       });
-      console.log("res" + res.shortUrl);
-
+      // console.log("res" + res.shortUrl);
       const shortenUrl = `${import.meta.env.VITE_REACT_SUB_DOMAIN}/${
         res.shortUrl
       }`;
@@ -46,7 +45,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         });
       });
 
-      // await refetch();
+      await refetch();
       reset();
       setOpen(false);
     } catch (error) {
